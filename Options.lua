@@ -4858,7 +4858,7 @@ local function CreateOptionsTable()
           options.args.Widgets.args.ClassIconWidget.args.Textures.args["Prev" .. k_c].image = "Interface\\AddOns\\TidyPlates_ThreatPlates\\Widgets\\ClassIconWidget\\" .. db.classWidget.theme .. "\\" .. CLASS_SORT_ORDER[k_c]
         end
       end,
-      values = { default = "Default", transparent = "Transparent" },
+      values = { default = "Default", transparent = "Transparent", crest = "Crest" },
       arg = { "classWidget", "theme" },
     },
   };
