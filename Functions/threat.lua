@@ -39,25 +39,21 @@ function Addon:UnitIsOffTanked(unit)
 
   local target_of_unit = unitid .. "target"
 
-  return UnitIsUnit(target_of_unit, "pet") or IsBlackOxStatue(target_of_unit) or ("TANK" == UnitGroupRolesAssigned(target_of_unit))
+  return UnitIsUnit(target_of_unit, "pet") or Addon:IsBlackOxStatue(target_of_unit) or ("TANK" == UnitGroupRolesAssigned(target_of_unit))
 end
 
-function IsBlackOxStatue(unitid)
-  if nil == unitid then
-    return false
-  end
-
-  guid = UnitGUID(unitid)
+function Addon:IsBlackOxStatue(unitid)
+  local guid = UnitGUID(unitid)
   if nil == guid then
     return false
   end
 
-  unit_type, server_id, instance_id, zone_uid, id, spawn_uid = ExtractCreatureGUIDFields(guid)
+  local unit_type, server_id, instance_id, zone_uid, id, spawn_uid = Addon:ExtractCreatureGUIDFields(guid)
 
   return "61146" == id and "Creature" == unit_type
 end
 
-function ExtractCreatureGUIDFields(guid)
+function Addon:ExtractCreatureGUIDFields(guid)
   return string.match(guid, '^([^-]+)%-0%-([0-9A-F]+)%-([0-9A-F]+)%-([0-9A-F]+)%-([0-9A-F]+)%-([0-9A-F]+)$')
 end
 
